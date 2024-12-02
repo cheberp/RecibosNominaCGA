@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RecibosNominaCGA.Views.ReciboPage"
+             Title="{Binding Title}">
+    <ScrollView >
+        <Grid RowDefinitions="auto,.2*,auto,.2  *,auto,.05*,auto,.12*,.05*"
+              Margin="15">
+        <Label Text="Percepciones"
+               Style="{StaticResource LabelTitle}"
+               Grid.Row="0"/>
+        <CollectionView ItemsSource="{Binding ReciboPercepciones}"
+                        ItemTemplate="{StaticResource ListadoConceptos}"
+                        Grid.Row="1">
+        </CollectionView>
+         <Label Text="Deducciones"
+               Style="{StaticResource LabelTitle}"
+                Grid.Row="2"/>
+        <CollectionView ItemsSource="{Binding ReciboDeducciones}"
+                        ItemTemplate="{StaticResource ListadoConceptos}"
+                        Grid.Row="3">
+        </CollectionView>
+        <Label Text="Vales"
+               Style="{StaticResource LabelTitle}"
+               Grid.Row="4"/>
+        <CollectionView ItemsSource="{Binding ReciboVales}"
+                        ItemTemplate="{StaticResource ListadoConceptos}"
+                        Grid.Row="5">
+        </CollectionView>
+        <Label Text="Totales"
+               Style="{StaticResource LabelTitle}"
+               Grid.Row="6"/>
+        <CollectionView ItemsSource="{Binding ReciboTotales}"
+                        ItemTemplate="{StaticResource ListadoConceptos}"
+                        Grid.Row="7">
+        </CollectionView>
+           <Button Text="Descargar Recibo "
+                   Command="{Binding DescargaReciboCommand}"
+                   Grid.Row="8" />
+        </Grid>   
+    </ScrollView>
+     
+</ContentPage>

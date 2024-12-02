@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RecibosNominaCGA.Views.NewUserPage"
+             NavigationPage.HasNavigationBar="False"
+             xmlns:Vistas="clr-namespace:RecibosNominaCGA.Views">
+    <Grid
+        RowDefinitions=".20*,*,.20*">
+        <Vistas:VistaHeaderInicio Grid.Row="0"
+                                  Padding="0"
+                                  Margin="0"
+                                  VerticalOptions="Start"
+                                  TranslationY="-70"
+                                  HorizontalOptions="Fill"/>
+        <Grid Grid.Row="1"
+             RowSpacing="15"
+              RowDefinitions=".3*,.15*,.15*,.15*,.15*,.15*,.3*,*"
+              ColumnDefinitions=".1*,.35*,*,.1*">
+              <Button 
+                Margin="0,20,0,0"
+                Grid.ColumnSpan="2"
+                Grid.Column="1"
+                Grid.Row="0"
+                Text="Iniciar como invitado"
+                FontAttributes="Bold"
+                WidthRequest="200"
+                Command="{Binding VersionPruebaCommand}"
+                />
+            <Label
+                Grid.Column="1"
+                Grid.Row="1"
+                Text="Nombre:"
+                VerticalOptions="Center"
+                HorizontalOptions="Start"/>
+            <Entry
+                Grid.Column="2"
+                Grid.Row="1"
+                Text="{Binding Correo}"/>
+            <Label
+                Grid.Column="1"
+                Grid.Row="2"
+                Text="Correo:"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"/>
+            <Entry
+                Grid.Column="2"
+                Grid.Row="2"/>
+            <Label
+                Grid.Column="1"
+                Grid.Row="3"
+                Text="Telefono:"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"/>
+            <Entry
+                Grid.Column="2"
+                Grid.Row="3"/>
+            <Label
+                Grid.Column="1"
+                Grid.Row="4"
+                Text="Empresa:"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"/>
+            <Entry
+                Grid.Column="2"
+                Grid.Row="4"/>
+            <Label
+                Grid.Column="1"
+                Grid.Row="5"
+                Text="Puesto:"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"/>
+            <Entry
+                Grid.Column="2"
+                Grid.Row="5"/>
+            
+            <Button 
+                Margin="0,20,0,0"
+                Text="Solicitar informacion"
+                Grid.ColumnSpan="2"
+                Grid.Column="1"
+                Grid.Row="6"
+                Command="{Binding EnviarInfoContactCommand}"
+                />
+        </Grid>
+        <Vistas:VistaBoth Grid.Row="2"
+                          Padding="0"
+                          Margin="0"
+                          VerticalOptions="Start"
+                          HorizontalOptions="End"
+                          TranslationY="-30"/>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RecibosNominaCGA.Views.InicioPage"
+             Title="{Binding Title}"
+             NavigationPage.HasNavigationBar="False"
+             xmlns:Vistas="clr-namespace:RecibosNominaCGA.Views">
+    <Grid RowDefinitions=".08*,*,.08*">
+        <Vistas:VistaHeaderInicio Grid.Row="0" Padding="0"
+                            Margin="0"
+                            VerticalOptions="Start"
+                            TranslationY="-80"
+                            HorizontalOptions="Fill"
+                            />
+        <VerticalStackLayout Margin="20"
+                         Padding="0"
+                         Spacing="10"
+                         Grid.Row="1">
+        
+        <Grid ColumnDefinitions="130,*"
+              Padding="0">
+            <Image Source="{Binding LogoEmpresa}"
+                   HeightRequest="120"
+                   WidthRequest="120"
+                   Grid.Column="0"/>
+           <Label 
+               Text="{Binding Empresa}"
+               VerticalOptions="Center" 
+               HorizontalOptions="Start"
+               Grid.Column="1"
+               Style="{StaticResource LabelTitle}"/>
+
+        </Grid>
+        <Image Source="{Binding FotoEmpleado}"
+               HeightRequest="150"
+               WidthRequest="150"
+               Margin="0,0,10,0"
+               />
+        <Grid RowDefinitions="auto,auto,auto,auto,auto,auto"
+              ColumnDefinitions="110,*"
+              RowSpacing="10">
+        <Label Text="Empleado: "
+               HorizontalOptions="End"
+               Style="{StaticResource LabelTitle}"/>
+        <Label Text="{Binding Empleado}"
+               Grid.Column="1"
+               HorizontalOptions="Start"/>
+        <Label Text="Nombre: " Grid.Row="1"
+               HorizontalOptions="End"
+               Style="{StaticResource LabelTitle}"/>
+        <Label Text="{Binding Nombre}"
+               FontFamily="MADE Tommy Soft Regular"
+               FontSize="20"
+               Grid.Row="1"
+               Grid.Column="1"
+               HorizontalOptions="Start"/>
+        <Label Text="Turno: " Grid.Row="2"
+               HorizontalOptions="End"
+               Style="{StaticResource LabelTitle}"/>
+        <Label Text="{Binding Turno}"
+               FontFamily="MADE Tommy Soft Regular"
+               FontSize="20"
+               Grid.Row="2"
+               Grid.Column="1"
+               HorizontalOptions="Start"/>
+        <Label Text="Horario: " Grid.Row="3"
+               HorizontalOptions="End"
+               Style="{StaticResource LabelTitle}"/>
+        <Label Text="{Binding Horario}"
+               FontFamily="MADE Tommy Soft Regular"
+               FontSize="20"
+               Grid.Row="3"
+               Grid.Column="1"
+               HorizontalOptions="Start"
+               />
+        <Label Text="Supervisor: " Grid.Row="4"
+               HorizontalOptions="End"
+               Style="{StaticResource LabelTitle}"/>
+        <Label Text="{Binding Supervisor}"
+               FontFamily="MADE Tommy Soft Regular"
+               FontSize="20"
+               Grid.Row="4"
+               HorizontalOptions="Start"
+               Grid.Column="1"/>
+        <Label Text="Correo: " Grid.Row="5"
+               HorizontalOptions="End"
+               Style="{StaticResource LabelTitle}"/>
+        <Label Text="{Binding Correo}"
+               FontFamily="MADE Tommy Soft Regular"
+               FontSize="20"
+               Grid.Row="4"
+               HorizontalOptions="Start"
+               Grid.Column="1"/>
+        </Grid>
+    </VerticalStackLayout>
+        <Vistas:VistaBoth Grid.Row="2"
+                          Padding="0"
+                          Margin="0" 
+                          VerticalOptions="Start"
+                          HorizontalOptions="End"
+                          TranslationY="-100"/>
+    </Grid>
+    
+</ContentPage>

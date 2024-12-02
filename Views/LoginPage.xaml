@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RecibosNominaCGA.Views.LoginPage"
+             Title="LoginPage"
+             xmlns:Vistas="clr-namespace:RecibosNominaCGA.Views"
+             NavigationPage.HasNavigationBar="False"
+             Shell.TabBarIsVisible="False">
+       <Grid
+              RowDefinitions=".20*,*,.20*">
+              <Vistas:VistaHeader Grid.Row="0"
+                            Padding="0"
+                                  Margin="0"
+                                  VerticalOptions="Start"
+                                  TranslationY="-70"
+                                  HorizontalOptions="Fill"/>
+              <Grid Grid.Row="1"
+                    Padding="0"
+                    RowDefinitions="auto,*,*,*,auto"
+                    ColumnDefinitions="auto,*"
+                    RowSpacing="0"
+                    Margin="20,100,20,0"
+                    VerticalOptions="Start">
+                     <Label Text="Recibo Electronico"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            HorizontalTextAlignment="Center"
+                            FontSize="40"
+                            FontAttributes="Bold"
+                            Grid.ColumnSpan="2"
+                            FontFamily="MADE Tommy Soft Bold"
+                            Margin="0,0,0,0"
+                            TranslationY="-50"/>
+                     <Label Text="Usuario:"
+                            VerticalOptions="Center"
+                            FontSize="Medium"
+                            FontAttributes="Bold"
+                            Grid.Column="0"
+                            HorizontalOptions="End"
+                            Grid.Row="1"
+                            Margin="0,20,0,20"/>
+                     <Entry BackgroundColor="Transparent"
+                            Placeholder="Ingrese usuario"
+                            TextColor="#828282"
+                            FontSize="Medium"
+                            PlaceholderColor="#625D5D"
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Margin="0,20,0,20"
+                            Text="{Binding Usuario}"/>
+                     <Label Text="Contraseña:"
+                            VerticalOptions="Center"
+                            FontSize="Medium"
+                            FontAttributes="Bold"
+                            Grid.Column="0"
+                            Grid.Row="2"
+                            HorizontalOptions="End"
+                            Margin="0,20,0,0"/>
+                     <Entry BackgroundColor="Transparent"
+                            Placeholder="Ingrese contraseña"
+                            TextColor="#828282"
+                            FontSize="Medium"
+                            IsPassword="True"
+                            PlaceholderColor="#625D5D"
+                            Text="{Binding Password}"
+                            Grid.Column="1"
+                            Grid.Row="2"
+                            Margin="0,20,0,0"/>
+                     <Button CornerRadius=" 20"
+                             Text="Iniciar Sesion"
+                             Margin=" 10,60,10,20"
+                             Command="{Binding Logincommand}"
+                             Opacity=".9"
+                             Grid.Row="3"
+                             Grid.ColumnSpan="2">
+                     </Button>
+                     <Button 
+                             BackgroundColor="Transparent"
+                             FontAttributes="Italic"
+                             TextColor="{AppThemeBinding Light={StaticResource SecondaryCGAW}, Dark={StaticResource SecondaryCGAB}}"
+                             Text="Registrar usuario nuevo"
+                             Margin=" 10,-20,10,10"
+                             Command="{Binding NewUsercommand}"
+                             Grid.Row="4"
+                             Grid.ColumnSpan="2">       
+                     </Button>
+              </Grid>
+              <Vistas:VistaBoth Grid.Row="2"
+                                Padding="0"
+                                Margin="0"
+                                VerticalOptions="Start"
+                                HorizontalOptions="End"
+                                TranslationY="-30"/>
+       </Grid>
+</ContentPage>

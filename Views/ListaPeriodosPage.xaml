@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RecibosNominaCGA.Views.ListaPeriodosPage"
+             Title="{Binding Title}"
+             xmlns:Vistas="clr-namespace:RecibosNominaCGA.Views">
+    <!--<VerticalStackLayout>
+        <Label Text="ListadoPeriodo"/>
+
+    </VerticalStackLayout>-->
+    <Grid RowDefinitions=".08*,*,.08*"
+          RowSpacing="60">
+        <Vistas:VistaHeader Grid.Row="0" Padding="0"
+                            Margin="0"
+                            VerticalOptions="StartAndExpand"
+                            TranslationY="-80"
+                            HorizontalOptions="FillAndExpand"
+                            />
+        <CollectionView ItemsSource="{Binding LP}"
+                    SelectionMode="Single"
+                    SelectedItem="{Binding LPSeleccted}"
+                    SelectionChangedCommand="{Binding DetalleCommand}"
+                    ItemTemplate="{StaticResource ListadoPeriodos}"
+                    Grid.Row="1">
+        </CollectionView>
+        <Vistas:VistaBoth Grid.Row="2"
+                          Padding="0"
+                          Margin="0" 
+                          VerticalOptions="StartAndExpand"
+                          HorizontalOptions="EndAndExpand"
+                          TranslationY="-108"/>    
+    </Grid>
+
+</ContentPage>
