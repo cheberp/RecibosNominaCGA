@@ -24,7 +24,7 @@
                 Text="Iniciar como invitado"
                 FontAttributes="Bold"
                 WidthRequest="200"
-                Command="{Binding VersionPruebaCommand}"
+                Command="{Binding IrVersionPruebacommand}" 
                 />
             <Label
                 Grid.Column="1"
@@ -35,7 +35,8 @@
             <Entry
                 Grid.Column="2"
                 Grid.Row="1"
-                Text="{Binding Correo}"/>
+                Text="{Binding Nombre}"
+                />
             <Label
                 Grid.Column="1"
                 Grid.Row="2"
@@ -44,7 +45,9 @@
                 HorizontalOptions="Center"/>
             <Entry
                 Grid.Column="2"
-                Grid.Row="2"/>
+                Grid.Row="2"
+                Text="{Binding Correo}"
+                />
             <Label
                 Grid.Column="1"
                 Grid.Row="3"
@@ -53,7 +56,9 @@
                 HorizontalOptions="Center"/>
             <Entry
                 Grid.Column="2"
-                Grid.Row="3"/>
+                Grid.Row="3"
+                Text="{Binding Telefono}"
+                />
             <Label
                 Grid.Column="1"
                 Grid.Row="4"
@@ -62,7 +67,9 @@
                 HorizontalOptions="Center"/>
             <Entry
                 Grid.Column="2"
-                Grid.Row="4"/>
+                Grid.Row="4"
+                Text="{Binding Empresa}"
+                />
             <Label
                 Grid.Column="1"
                 Grid.Row="5"
@@ -71,7 +78,9 @@
                 HorizontalOptions="Center"/>
             <Entry
                 Grid.Column="2"
-                Grid.Row="5"/>
+                Grid.Row="5"
+                Text="{Binding Puesto}"
+                />
             
             <Button 
                 Margin="0,20,0,0"
@@ -79,7 +88,7 @@
                 Grid.ColumnSpan="2"
                 Grid.Column="1"
                 Grid.Row="6"
-                Command="{Binding EnviarInfoContactCommand}"
+                Command="{Binding SolicitarInformacioncommand}"
                 />
         </Grid>
         <Vistas:VistaBoth Grid.Row="2"

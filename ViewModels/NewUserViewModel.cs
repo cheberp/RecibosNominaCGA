@@ -75,18 +75,20 @@ namespace RecibosNominaCGA.ViewModels
             try
             {
                 IsBusy = true;               
-                IsEnable = false;
-                bool testUser=true;
-                Uri RequestUri = new Uri("http://cgyasc2014-001-site6.ctempurl.com/api/testuser");
-                // Uri RequestUri = new Uri("http://localhost:63538//api/usertk");
+                IsEnable = false;                
+
+                Uri RequestUri = new Uri("http://cgyasc2014-001-site6.ctempurl.com/api/UserInvitado");
+              //Uri RequestUri = new Uri("http://cgyasc2014-001-site6.ctempurl.com/api/UserInvitado");
+               // Uri RequestUri = new Uri("http://localhost:63538//api/usertk");
                 HttpClient client = new HttpClient();
-                var json = JsonConvert.SerializeObject(testUser);
+                var json = JsonConvert.SerializeObject(new {TEST=true});
                 var contentJson = new StringContent(json, Encoding.UTF8, "application/json");
                 var response = await client.PostAsync(RequestUri, contentJson);
                 if (response.IsSuccessStatusCode)
                 {
                     //string content = await response.Content.ReadAsStreamAsync();
                     var content = await response.Content.ReadAsStringAsync();
+                 /*
                     var obj = JsonConvert.DeserializeObject<NombreModel>(content);
                     if (obj != null)
                     {
@@ -103,6 +105,7 @@ namespace RecibosNominaCGA.ViewModels
                         Preferences.Set("REQUIERE_AUT", obj.REQUIERE_AUT);
                         await Navigation.PushAsync(new TabbedMenu());
                     }
+                    */
                 }
                 else
                 {
@@ -144,7 +147,7 @@ namespace RecibosNominaCGA.ViewModels
                 {
                     //string content = await response.Content.ReadAsStreamAsync();
                     var content = await response.Content.ReadAsStringAsync();
-                    var obj = JsonConvert.DeserializeObject<NombreModel>(content);
+                    /*var obj = JsonConvert.DeserializeObject<NombreModel>(content);
                     if (obj != null)
                     {
                         Preferences.Set("Nombre", obj.NOMBRE);
@@ -159,7 +162,7 @@ namespace RecibosNominaCGA.ViewModels
                         Preferences.Set("CORREO", obj.CORREO);
                         Preferences.Set("REQUIERE_AUT", obj.REQUIERE_AUT);
                         await Navigation.PushAsync(new TabbedMenu());
-                    }
+                    }*/
                 }
                 else
                 {
