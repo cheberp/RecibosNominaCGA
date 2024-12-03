@@ -3,6 +3,7 @@
 	<PropertyGroup>
 		<TargetFrameworks>net8.0-android;net8.0-maccatalyst;net8.0-ios</TargetFrameworks>
 		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net8.0-windows10.0.19041.0</TargetFrameworks>
+		<!-- <RuntimeIdentifiers>ios-arm64;ios-arm;ios-x64;maccatalyst-x64;maccatalyst-arm64</RuntimeIdentifiers>-->
 		<MauiUIApplicationDelegate>True</MauiUIApplicationDelegate>
     	<PackageApp>True</PackageApp>
 		

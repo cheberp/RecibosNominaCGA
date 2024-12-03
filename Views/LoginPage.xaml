@@ -78,7 +78,7 @@
                              BackgroundColor="Transparent"
                              FontAttributes="Italic"
                              TextColor="{AppThemeBinding Light={StaticResource SecondaryCGAW}, Dark={StaticResource SecondaryCGAB}}"
-                             Text="Registrar usuario nuevo"
+                             Text="Registrar usuario nuevo o iniciar como invitado"
                              Margin=" 10,-20,10,10"
                              Command="{Binding NewUsercommand}"
                              Grid.Row="4"

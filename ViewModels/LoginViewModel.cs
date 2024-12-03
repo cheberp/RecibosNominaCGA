@@ -92,12 +92,26 @@ namespace RecibosNominaCGA.VIEWMODELS
         #region Procesos
         public async Task Login()
         {
+
+           
             if (VersionTracking.Default.IsFirstLaunchForVersion(VersionTracking.Default.CurrentVersion) && VersionTracking.Default.PreviousVersion != null && VersionTracking.Default.CurrentVersion != VersionTracking.Default.PreviousVersion)
             {
                 await ActualizarTK();
             }
             string _token = Preferences.Get("TOKEN", string.Empty);
             string Mensaje = "";
+            string MensajeLogin="";
+            if(string.IsNullOrWhiteSpace(this.Usuario)){
+                MensajeLogin= MensajeLogin+ "Ingrese el usuario\n";
+            }
+            if(string.IsNullOrWhiteSpace(Password)){
+                MensajeLogin= MensajeLogin+ "Ingrese la contraseña\n";
+            }
+            if(!string.IsNullOrEmpty(MensajeLogin)) {
+                    await DisplayAlert("Validar Informacion", MensajeLogin, "Aceptar");
+                    return;
+                }
+
             LoginModel login = new LoginModel(Usuario, Password, Modelo, Marca, _token, Settings.ObtenerAplicacion());
             try
             {

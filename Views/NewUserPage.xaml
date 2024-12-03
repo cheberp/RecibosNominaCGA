@@ -4,6 +4,9 @@
              x:Class="RecibosNominaCGA.Views.NewUserPage"
              NavigationPage.HasNavigationBar="False"
              xmlns:Vistas="clr-namespace:RecibosNominaCGA.Views">
+
+  
+
     <Grid
         RowDefinitions=".20*,*,.20*">
         <Vistas:VistaHeaderInicio Grid.Row="0"

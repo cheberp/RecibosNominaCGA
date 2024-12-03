@@ -7,6 +7,7 @@ using RecibosNominaCGA.VIEWMODELS;
 using RecibosNominaCGA.Models;
 using System.Text;
 using RecibosNominaCGA.Views;
+using System.Text.RegularExpressions;
 
 namespace RecibosNominaCGA.ViewModels
 {
@@ -19,7 +20,6 @@ namespace RecibosNominaCGA.ViewModels
         string _Telefono;
         string _Empresa;
         string _Puesto;
-
         ContactoModel _contactoModel= new ContactoModel();
 
         #endregion
@@ -88,8 +88,8 @@ namespace RecibosNominaCGA.ViewModels
                 {
                     //string content = await response.Content.ReadAsStreamAsync();
                     var content = await response.Content.ReadAsStringAsync();
-                 /*
-                    var obj = JsonConvert.DeserializeObject<NombreModel>(content);
+                 
+                   var obj = JsonConvert.DeserializeObject<NombreModel>(content);
                     if (obj != null)
                     {
                         Preferences.Set("Nombre", obj.NOMBRE);
@@ -99,13 +99,13 @@ namespace RecibosNominaCGA.ViewModels
                         Preferences.Set("Turno", obj.TURNO);
                         Preferences.Set("Horario", obj.HORARIO);
                         Preferences.Set("Supervisor", obj.SUPERVISOR);
-                        Preferences.Set("LOGEADO", true);
+                        //Preferences.Set("LOGEADO", true);
                         // Preferences.Set("TOKEN", obj.TOKEN);
                         Preferences.Set("CORREO", obj.CORREO);
                         Preferences.Set("REQUIERE_AUT", obj.REQUIERE_AUT);
-                        await Navigation.PushAsync(new TabbedMenu());
+                        
                     }
-                    */
+                    await Navigation.PushAsync(new TabbedMenu());
                 }
                 else
                 {
@@ -137,6 +137,23 @@ namespace RecibosNominaCGA.ViewModels
                     CIA = this.Empresa,
                     PUESTO = this.Puesto
                 };
+                string StrDatos = "";
+                if (string.IsNullOrWhiteSpace(this.Nombre))   {StrDatos = StrDatos + "Falta Nombre Completo\n" ;}
+                if (string.IsNullOrWhiteSpace(this.Correo))   {  StrDatos += "Falta Correo Electrónico\n"; }
+                else if (!IsValidEmail(this.Correo))
+                    {
+                        StrDatos += "Correo Electrónico no tiene un formato válido\n";
+                    }
+                   
+                if (string.IsNullOrWhiteSpace(this.Telefono)) { StrDatos += "Falta Número Telefónico\n"; }
+                if (string.IsNullOrWhiteSpace(this.Empresa)) { StrDatos += "Falta Nombre de Empresa \n"; }
+                if (string.IsNullOrWhiteSpace(this.Puesto)) { StrDatos += "Falta Puesto\n"; }
+                if(!string.IsNullOrEmpty(StrDatos)) {
+                    await DisplayAlert("Validar Informacion", StrDatos, "Aceptar");
+                    return;
+                }
+
+
                 Uri RequestUri = new Uri("http://cgyasc2014-001-site6.ctempurl.com/api/enviocontacto");
                 // Uri RequestUri = new Uri("http://localhost:63538//api/usertk");
                 HttpClient client = new HttpClient();
@@ -144,25 +161,9 @@ namespace RecibosNominaCGA.ViewModels
                 var contentJson = new StringContent(json, Encoding.UTF8, "application/json");
                 var response = await client.PostAsync(RequestUri, contentJson);
                 if (response.IsSuccessStatusCode)
-                {
-                    //string content = await response.Content.ReadAsStreamAsync();
-                    var content = await response.Content.ReadAsStringAsync();
-                    /*var obj = JsonConvert.DeserializeObject<NombreModel>(content);
-                    if (obj != null)
-                    {
-                        Preferences.Set("Nombre", obj.NOMBRE);
-                        Preferences.Set("Nombre_CIA", obj.NOMBRE_CIA);
-                        Preferences.Set("CIA", obj.CIA);
-                        Preferences.Set("EMPLEADO", obj.EMPLEADO);
-                        Preferences.Set("Turno", obj.TURNO);
-                        Preferences.Set("Horario", obj.HORARIO);
-                        Preferences.Set("Supervisor", obj.SUPERVISOR);
-                        Preferences.Set("LOGEADO", true);
-                        Preferences.Set("TOKEN", obj.TOKEN);
-                        Preferences.Set("CORREO", obj.CORREO);
-                        Preferences.Set("REQUIERE_AUT", obj.REQUIERE_AUT);
-                        await Navigation.PushAsync(new TabbedMenu());
-                    }*/
+                {                  
+                    var content = await response.Content.ReadAsStringAsync();                   
+                    await DisplayAlert("Aviso", "Nos pondremos en contacto con la informacion proporcionada","Aceptar");
                 }
                 else
                 {
@@ -180,7 +181,16 @@ namespace RecibosNominaCGA.ViewModels
                 await DisplayAlert("Error", ex.Message, "Continuar");
             }
         }
+        bool IsValidEmail(string email)
+        {
+            if (string.IsNullOrWhiteSpace(email))
+                return false;
+            string emailRegex = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+            return Regex.IsMatch(email, emailRegex);
+        }
         #endregion
+
+        
         #region Comandos
         //public ICommand Asynccommand => new Command(async () => await Prueba());
         //public ICommand Restablecercommand => new Command(async () => await RestablecerContrasena());
